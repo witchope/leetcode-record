@@ -42,7 +42,7 @@
 // 👍 19503 👎 690
 
 
-package cn.hackzone.leetcode.editor.en;
+package cn.hackzone.leetcode.editor.cn;
 
 import java.util.HashMap;
 import java.util.Map;
