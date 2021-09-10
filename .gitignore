@@ -1,2 +1,4 @@
 *.iml
 .idea
+out
+/src/main/java/cn/hackzone/leetcode/editor/cn/doc/
