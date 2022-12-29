@@ -265,7 +265,7 @@ public class CommonUtils {
     }
 
     public static int[][] convertLeetCodeRegularRectangleArrayInputIntoJavaArray(String input) {
-        /**
+        /*
          * LeetCode 2-d array input usually comes like this: it's a REGULAR rectangle
          * [[448,931],[234,889],[214,962],[576,746]]
          * The expected input for this method is: "[448,931],[234,889],[214,962],[576,746]"
@@ -301,7 +301,7 @@ public class CommonUtils {
     }
 
     public static int[][] convertLeetCodeIrregularLengths2DArrayInputIntoJavaArray(String input) {
-        /**
+        /*
          * LeetCode 2-d array input usually comes like this: each row could have different length
          * [[448,931,123,345],[889],[214,962],[576,746,897]]
          * The expected input for this method is: "[448,931,123,345],[889],[214,962],[576,746,897]"
@@ -353,7 +353,7 @@ public class CommonUtils {
     }
 
     public static List<List<String>> convertLeetCode2DStringArrayInputIntoJavaArray(String input) {
-        /**
+        /*
          * LeetCode 2-d array input usually comes like this: each row could have different length
          * [["A","B"],["C"],["B","C"],["D"]]
          * The expected input for this method is: "[\"A\",\"B\"],[\"C\"],[\"B\",\"C\"],[\"D\"]"
@@ -383,7 +383,7 @@ public class CommonUtils {
     }
 
     public static List<String> convertLeetCode1DStringArrayInputIntoJavaArray(String input) {
-        /**
+        /*
          * LeetCode 2-d array input usually comes like this: each row could have different length
          * ["A","B","C"]
          * The expected input for this method is: "[\"A\",\"B\",\"C\"]"

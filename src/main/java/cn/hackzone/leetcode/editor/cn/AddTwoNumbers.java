@@ -43,10 +43,17 @@
 
 package cn.hackzone.leetcode.editor.cn;
 
+import cn.hackzone.leetcode.editor.common.struct.ListNode;
+import cn.hackzone.leetcode.editor.common.util.LinkedListUtils;
+
 public class AddTwoNumbers {
 
     public static void main(String[] args) {
         Solution solution = new AddTwoNumbers().new Solution();
+        ListNode l1 = LinkedListUtils.constructLinkedList(new int[]{2, 4, 3});
+        ListNode l2 = LinkedListUtils.constructLinkedList(new int[]{5, 6, 4});
+        ListNode listNode = solution.addTwoNumbers(l1, l2);
+        LinkedListUtils.printList(listNode);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -64,43 +71,34 @@ public class AddTwoNumbers {
     class Solution {
 
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-            return add2Numbers(l1, l2, 0);
+            return addTwoNumbers(0, l1, l2);
         }
 
-        private ListNode add2Numbers(ListNode l1, ListNode l2, int combine) {
+        private ListNode addTwoNumbers(int carry, ListNode l1, ListNode l2) {
+            int sum = carry;
             if (l1 == null && l2 == null) {
-                return combine == 0 ? null : new ListNode(combine);
+                return carry == 1 ? new ListNode(1) : null;
             }
             if (l1 != null) {
-                combine += l1.val;
+                sum += l1.val;
                 l1 = l1.next;
             }
             if (l2 != null) {
-                combine += l2.val;
+                sum += l2.val;
                 l2 = l2.next;
             }
-            return new ListNode(combine % 10, add2Numbers(l1, l2, combine / 10));
+            if (sum >= 10) {
+                carry = 1;
+                sum = sum % 10;
+            } else {
+                carry = 0;
+            }
+            ListNode next = addTwoNumbers(carry, l1, l2);
+            return new ListNode(sum, next);
         }
-
     }
 
-//leetcode submit region end(Prohibit modification and deletion)
+    //leetcode submit region end(Prohibit modification and deletion)
 
 }
 
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode() {
-    }
-
-    ListNode(int val) {
-        this.val = val;
-    }
-
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-}
