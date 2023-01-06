@@ -3,10 +3,7 @@ package cn.hackzone.leetcode.editor.common.util;
 import cn.hackzone.leetcode.editor.common.struct.Interval;
 import cn.hackzone.leetcode.editor.common.struct.ListNode;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class CommonUtils {
 
@@ -27,6 +24,28 @@ public class CommonUtils {
         CommonUtils.printListList(convertLeetCode2DStringArrayInputIntoJavaArray("[\"A\",\"B\"],[\"C\"],[\"B\",\"C\"],[\"D\"]"));
         CommonUtils.print(convertLeetCode1DStringArrayInputIntoJavaArray("[\"abcsi\",\"abyzjgj\",\"advz\",\"ag\",\"agkgdkob\",\"agpr\",\"ail\"]"));
         CommonUtils.print2DIntArray(convertLeetCodeIrregularLengths2DArrayInputIntoJavaArray("[448,931,123,345],[889],[214,962],[576,746,897]"));
+    }
+
+    public static void printIndent(int count) {
+        for (int i = 0; i < count; i++) {
+            System.out.print("  ");
+        }
+    }
+
+    public static void printPostIndent(int count, Object res) {
+        for (int i = 0; i < count; i++) {
+            System.out.print("   ");
+        }
+        System.out.println();
+        if (res instanceof int[][]) {
+            print2DIntArray((int[][]) res);
+        } else if (res instanceof char[][]) {
+            print2DCharArray((char[][]) res);
+        } else if (res instanceof int[]) {
+            printArray((int[]) res);
+        } else {
+            System.out.println("return " + res.toString());
+        }
     }
 
     public static void printArray(boolean[] booleans) {
