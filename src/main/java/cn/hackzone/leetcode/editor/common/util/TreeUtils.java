@@ -1,42 +1,63 @@
 package cn.hackzone.leetcode.editor.common.util;
 
+import cn.hackzone.leetcode.editor.common.struct.Node;
 import cn.hackzone.leetcode.editor.common.struct.TreeNode;
 
 import java.util.*;
 
 public class TreeUtils {
 
-/**
-* This method is to construct a normal binary tree. The input reads like
-* this for [5, 3, 6, 2, 4, null, null, 1], i.e. preorder:
-*               5
-*             /   \
-*            3     6
-*           / \    / \
-*          2   4  #   #
-*         /
-*        1
-*/
-@Notes(context = "This is usually how Leetcode OJ passes a binary tree into testing: "
-        + "https://leetcode.com/faq/#binary-tree, I wrote this function for my own ease of testing when copying"
-        + "the test case from Leetcode in the form of [1, null, 2, 3].")
-public static TreeNode constructBinaryTree(List<Integer> treeValues) {
-    TreeNode root = new TreeNode(treeValues.get(0));
-    Queue<TreeNode> queue = new LinkedList<>();
-    queue.offer(root);
-    for (int i = 1; i < treeValues.size(); i++) {
-        TreeNode curr = queue.poll();
-        if (treeValues.get(i) != null) {
-            curr.left = new TreeNode(treeValues.get(i));
-            queue.offer(curr.left);
+    /**
+     * This method is to construct a normal binary tree. The input reads like
+     * this for [5, 3, 6, 2, 4, null, null, 1], i.e. preorder:
+     * <pre>
+     *           5
+     *         /   \
+     *        3     6
+     *       / \    / \
+     *      2   4  #   #
+     *     /
+     *    1
+     * </pre>
+     */
+    @Notes(context = "This is usually how Leetcode OJ passes a binary tree into testing: "
+            + "https://leetcode.com/faq/#binary-tree, I wrote this function for my own ease of testing when copying"
+            + "the test case from Leetcode in the form of [1, null, 2, 3].")
+    public static TreeNode constructBinaryTree(List<Integer> treeValues) {
+        TreeNode root = new TreeNode(treeValues.get(0));
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        for (int i = 1; i < treeValues.size(); i++) {
+            TreeNode curr = queue.poll();
+            if (treeValues.get(i) != null) {
+                curr.left = new TreeNode(treeValues.get(i));
+                queue.offer(curr.left);
+            }
+            if (++i < treeValues.size() && treeValues.get(i) != null) {
+                curr.right = new TreeNode(treeValues.get(i));
+                queue.offer(curr.right);
+            }
         }
-        if (++i < treeValues.size() && treeValues.get(i) != null) {
-            curr.right = new TreeNode(treeValues.get(i));
-            queue.offer(curr.right);
-        }
+        return root;
     }
-    return root;
-}
+
+    public static Node constructLinkedBinaryTree(List<Integer> treeValues) {
+        Node root = new Node(treeValues.get(0));
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        for (int i = 1; i < treeValues.size(); i++) {
+            Node curr = queue.poll();
+            if (treeValues.get(i) != null) {
+                curr.left = new Node(treeValues.get(i));
+                queue.offer(curr.left);
+            }
+            if (++i < treeValues.size() && treeValues.get(i) != null) {
+                curr.right = new Node(treeValues.get(i));
+                queue.offer(curr.right);
+            }
+        }
+        return root;
+    }
 
     public static void printBinaryTree(TreeNode root) {
         CommonUtils.println("\nPrinting out the binary tree in a very visual manner as below:\n");
