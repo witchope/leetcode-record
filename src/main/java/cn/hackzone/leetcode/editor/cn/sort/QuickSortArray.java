@@ -15,24 +15,24 @@ public class QuickSortArray {
 
         public int[] sortArray(int[] nums) {
             shuffle(nums);
-            sort(nums, 0, nums.length - 1);
+            quickSort(nums, 0, nums.length - 1);
             return nums;
         }
 
-        void sort(int[] nums, int low, int high) {
-            if (low >= high) return;
+        void quickSort(int[] nums, int left, int right) {
+            if (left >= right) return;
 
-            int p = partition(nums, low, high);
+            int p = partition(nums, left, right);
 
-            sort(nums, low, p - 1);
-            sort(nums, p + 1, high);
+            quickSort(nums, left, p - 1);
+            quickSort(nums, p + 1, right);
         }
 
-        private int partition(int[] nums, int low, int high) {
-            int pivot = nums[high];
+        private int partition(int[] nums, int left, int right) {
+            int pivot = nums[right];
             // 双指针, 进行分组，pivot 左边小，右边大
-            int i = low - 1;
-            for (int j = low; j < high; j++) {
+            int i = left - 1;
+            for (int j = left; j < right; j++) {
                 if (nums[j] <= pivot) {
                     ++i;
                     swap(nums, i, j);
@@ -40,7 +40,7 @@ public class QuickSortArray {
             }
             // 交换 pivot 索引
             int p = i + 1;
-            swap(nums, p, high);
+            swap(nums, p, right);
             return p;
         }
 
